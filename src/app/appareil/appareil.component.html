@@ -1,4 +1,6 @@
 <li class="list-group-item">
     <!-- interpolation {{ }} -->
     <h4>Appareil : {{ appareilName }}  -- Statut : {{ appareilStatus }} / {{ getStatus() }}</h4>
+    <!-- two-way binding [( )]  -->
+    <input type="text" class="form-control" [(ngModel)]="appareilName">
 </li>
