@@ -3,10 +3,12 @@
     <div class="col-xs-12">
       <h2>Mes appareils</h2>
       <ul class="list-group">
-        <!-- utilisation de la propriété appareilName crée par le decorateur Input -->
-        <app-appareil [appareilName]="appareilOne" [appareilStatus]="'éteint'"></app-appareil>
-        <app-appareil [appareilName]="appareilTwo" [appareilStatus]="'allumé'"></app-appareil>
-        <app-appareil [appareilName]="appareilThree" [appareilStatus]="'éteint'"></app-appareil>
+        <!-- directive ngFor -> boucle -->
+        <app-appareil
+          *ngFor = "let appareil of appareils"
+          [appareilName]="appareil.name" 
+          [appareilStatus]="'éteint'"></app-appareil>
+        
       </ul>
       <!-- Event binding -->
       <button 

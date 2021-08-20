@@ -1,4 +1,6 @@
 <li class="list-group-item">
+    <div style="width:20px;height:20px;background-color:red;" 
+        *ngIf="appareilStatus === 'éteint'"></div>
     <!-- interpolation {{ }} -->
     <h4>Appareil : {{ appareilName }}  -- Statut : {{ appareilStatus }} / {{ getStatus() }}</h4>
     <!-- two-way binding [( )]  -->

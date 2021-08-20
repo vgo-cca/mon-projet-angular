@@ -9,10 +9,6 @@ export class AppComponent {
   title = 'mon-projet-angular';
   isAuth = false;
 
-  appareilOne = 'Machine à laver';
-  appareilTwo = 'Frigo';
-  appareilThree = 'Ordinateur';
-
   constructor() {
     setTimeout(
       () => {
@@ -24,4 +20,20 @@ export class AppComponent {
   onAllumer() {
     console.log('On allume tout !');
   }
+
+  appareils = [
+    {
+      name: 'Machine à laver',
+      status: 'éteint'
+    },
+    {
+      name: 'Frigo',
+      status: 'allumé'
+    },
+    {
+      name: 'Ordinateur',
+      status: 'éteint'
+    }
+  ];
+
 }
