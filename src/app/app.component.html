@@ -7,7 +7,7 @@
         <app-appareil
           *ngFor = "let appareil of appareils"
           [appareilName]="appareil.name" 
-          [appareilStatus]="'éteint'"></app-appareil>
+          [appareilStatus]="appareil.status"></app-appareil>
         
       </ul>
       <!-- Event binding -->

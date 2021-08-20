@@ -1,3 +1,4 @@
+import { CloneVisitor } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -18,4 +19,13 @@ export class AppareilComponent implements OnInit {
     return this.appareilStatus;
   }
 
+  getColor() {
+    if(this.appareilStatus === 'allumé') {
+      return 'green';
+    } else if(this.appareilStatus === 'éteint') {
+      return 'red';
+    }else{
+      return 'yellow';
+    }
+  }
 }
