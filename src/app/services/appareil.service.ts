@@ -1,10 +1,17 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppareilService {
-  appareils = [
+
+  // creation du Subject
+  // type de données: any
+  appareilsSubject = new Subject<any[]>();
+
+  // tab privé
+  private appareils = [
     {
       id: 1,
       name: 'Machine à laver',
@@ -27,20 +34,30 @@ export class AppareilService {
     }
   ];
 
+  // Quand le service reçoit de nouvelles données,
+  // emitAppareilSubject émet ces données par le Subject,
+  // elle est appelée dans toutes les méthodes qui en ont besoin.
+  emitAppareilSubject(){
+    this.appareilsSubject.next(this.appareils.slice());
+  }
+
   switchOnAll() {
     for(let appareil of this.appareils) {
       appareil.status = 'allumé';
     }
+    this.emitAppareilSubject();
   }
 
   switchOffAll() {
     for(let appareil of this.appareils) {
       appareil.status = 'éteint';
+      this.emitAppareilSubject();
     }
   }
 
   switchOnOne(i: number) {
     this.appareils[i].status = 'allumé';
+    this.emitAppareilSubject();
   }
 
   switchOffOne(i: number) {
