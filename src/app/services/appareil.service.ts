@@ -38,6 +38,7 @@ export class AppareilService {
   // emitAppareilSubject émet ces données par le Subject,
   // elle est appelée dans toutes les méthodes qui en ont besoin.
   emitAppareilSubject(){
+    console.log('hello');
     this.appareilsSubject.next(this.appareils.slice());
   }
 
@@ -45,6 +46,7 @@ export class AppareilService {
     for(let appareil of this.appareils) {
       appareil.status = 'allumé';
     }
+    console.log('hello');
     this.emitAppareilSubject();
   }
 
@@ -56,17 +58,20 @@ export class AppareilService {
   }
 
   switchOnOne(i: number) {
+    console.log('hello');
     this.appareils[i].status = 'allumé';
     this.emitAppareilSubject();
   }
 
   switchOffOne(i: number) {
+    console.log('hello');
     this.appareils[i].status = 'éteint';
   }
 
   getAppareilById(id: number) {
     const appareil = this.appareils.find(
       (s) => {
+        console.log('hello');
         return s.id === id;
       }
     );
