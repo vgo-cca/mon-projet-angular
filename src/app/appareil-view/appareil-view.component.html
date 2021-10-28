@@ -1,0 +1,21 @@
+<h2>Mes appareils</h2>
+<p>Mis à jour : {{ lastUpdate | async }}</p>
+<ul class="list-group">
+    <!-- directive ngFor -> boucle -->
+    <app-appareil
+        *ngFor = "let appareil of appareils, let i = index"
+        [appareilName]="appareil.name" 
+        [appareilStatus]="appareil.status"
+        [index] = "i"
+        [id]="appareil.id"
+    ></app-appareil>
+</ul>
+<!-- Event binding -->
+<button 
+    class="btn btn-success" 
+    (click)="onAllumer()"
+>Tout allumer</button>
+<button 
+    class="btn btn-success" 
+    (click)="onEteindre()"
+>Tout eteindre</button>
