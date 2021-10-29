@@ -23,6 +23,20 @@
                 <option value="jus de mangue">Jus de mangue</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Soumettre</button>
+        <div formArrayName="hobbies">
+            <h3>Vos hobbies</h3>
+            <!-- la  <div>  de class  form-group  est ensuite répété pour chaque  FormControl  dans le  FormArray
+            (retourné par  getHobbies(),initialement vide, en notant l'index afin de créer un nom unique
+            pour chaque  FormControl -->
+            <div class="form-group" *ngFor="let hobbyControl of getHobbies().controls; let i = index">
+                <!-- Le formControlName prendra correspond à l'index du control -->
+                <input type="text" class="form-control" [formControlName]="i">
+            </div>
+            <!-- onAddHobby crée un nouveau FormControl  -->
+            <button type="button" class="btn btn-success" (click)="onAddHobby()">Ajouter un hobby</button>
+        </div>
+        <!-- En liant la validité de  userForm  à la propriété  disabled  du bouton  submit,
+        vous intégrez la validation de données -->
+        <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Soumettre</button>
     </form>
 </div>
