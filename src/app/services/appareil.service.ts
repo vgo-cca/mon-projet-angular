@@ -29,6 +29,20 @@ export class AppareilService {
       status: 'éteint'
     }
   ];
+  
+  addAppareil(name: string, status: string){
+    const appareilObject = {
+      id: 0,
+      name: '',
+      status: ''
+    };
+    appareilObject.name = name;
+    appareilObject.status = status;
+    //  La ligne pour l'id prend l'id du dernier élément actuel de l'array et ajoute 1.
+    appareilObject.id = this.appareils[(this.appareils.length - 1)].id + 1;
+    this.appareils.push(appareilObject);
+    this.emitAppareilSubject();
+  }
 
   // créer une méthode qui, quand le service reçoit de nouvelles données,
   // fait émettre ces données par le Subject 
